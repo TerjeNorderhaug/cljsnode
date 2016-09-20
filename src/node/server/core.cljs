@@ -43,7 +43,9 @@
 (defn -main [& mess]
   (assert (= (aget js/React "version")
              (aget (reagent.dom.server/module) "version")))
-  (let [port (or (.-PORT (.-env js/process)) 1337)]
+  (let [port (if-let [port (first mess)]
+               (js/parseInt port)
+               (or (.-PORT (.-env js/process)) 1337))]
     (server port
             #(println (str "Server running at http://127.0.0.1:" port "/")))))
 

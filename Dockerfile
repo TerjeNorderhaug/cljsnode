@@ -6,14 +6,14 @@ RUN mkdir /nodejs && \
     | tar xvzf - -C /nodejs --strip-components=1
 ENV PATH $PATH:/nodejs/bin
 
-EXPOSE 1337
+EXPOSE 8080
 
 RUN mkdir -p /usr/src/app
 COPY . /usr/src/app
 WORKDIR /usr/src/app
 
 RUN lein do deps, compile
-CMD ["lein", "run"]
+CMD ["lein", "run", "8080"]
 
 
 
