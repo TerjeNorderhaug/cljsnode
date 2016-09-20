@@ -31,10 +31,11 @@
 
   :source-paths ["src/cljs"]
 
-  :clean-targets ^{:protect false} [[:cljsbuild :builds :server :compiler :output-to]
-                                    [:cljsbuild :builds :app :compiler :output-dir]
-                                    "node_modules"
-                                    :target-path :compile-path]
+  :clean-targets ^{:protect false}
+  [[:cljsbuild :builds :server :compiler :output-to]
+   [:cljsbuild :builds :app :compiler :output-dir]
+   "node_modules"
+   :target-path :compile-path]
 
   :figwheel {:http-server-root "public"
              :load-all-builds false
